@@ -6,21 +6,43 @@ class Reagent(models.Model):
     cid = models.IntegerField()
     name = models.CharField(max_length = 100)
     formula = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return '{} | {}'.format(self.name, self.formula)
+    
+    class Meta:
+        verbose_name_plural = 'substances and reagents'
+
 
 #liquid and solid reagents are kept in seperate models
 #as model fields differ 
 class LiquidEntry(models.Model):
     #id number is stored for look-up in reagent table
     #rest is from user filled form or auto generated (e.g date)
-    reagent_number = models.ForeignKey(Reagent, on_delete=models.CASCADE)
-    date = models.DateField()
-    concentration = models.FloatField() #in %
-    volume = models.FloatField()   #in ml     
-    quantity = models.FloatField() #volume*concentration of entry.
-
+    reagent = models.ForeignKey(Reagent, on_delete=models.CASCADE)
+    date = models.DateField(verbose_name = 'date of usage')
+    concentration = models.FloatField(verbose_name = 'concentration (%)', null=True) # in%
+    volume = models.FloatField(verbose_name = 'quantity used (ml)', null=True)   #in ml     
     
-class SolidEntry(models.Model):
-    reagent_number = models.ForeignKey(Reagent, on_delete=models.CASCADE)
-    date = models.DateField()
-    amount = models.FloatField() # in mg
+    def _get_quantity(self):
+        #volume*concentration of entry.
+        return self.volume * self.concentration/100.
+    quantity = property(_get_quantity)
 
+    def __str__(self):
+        return '{} | {} ml'.format(self.reagent.formula, self.quantity)
+
+    class Meta:
+        verbose_name = 'liquid'
+
+
+class SolidEntry(models.Model):
+    reagent = models.ForeignKey(Reagent, on_delete=models.CASCADE)
+    date = models.DateField(verbose_name = 'date of usage')
+    quantity = models.FloatField(verbose_name =  'amount used in (mg)', null=True) # in mg
+
+    def __str__(self):
+        return '{} | {} ml'.format(self.reagent.formula, self.quantity)
+
+    class Meta:
+        verbose_name = 'solid'
