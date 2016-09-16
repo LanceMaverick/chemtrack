@@ -1,0 +1,10 @@
+{% block title %}Add reagent{% endblock %}
+
+{% block content %}
+<h1>Search for new reagent</h1>
+<form role="form" action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Search</button>
+</form>
+{% endblock %}
