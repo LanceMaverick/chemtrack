@@ -1,9 +1,15 @@
-<h1>Confirm new reagent</h1>
-<form action="." method="post">
-    <ul>
-        {{ form.as_ul }}
-        <li>
-            <input type="submit" value="Submit" />
-        </li>
-    </ul>
-</form>
+{% extends 'reagents/base.html' %}
+
+{% block body %}
+    <div class = "container">
+        <h3>Confirm new reagent</h3>
+        <form action="." method="post">
+            <ul>
+                {{ form.as_ul }}
+                <li>
+                    <input type="submit" value="Submit" />
+                </li>
+            </ul>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'reagents/base.html' %}
+
+{% block body %}
+    <div class = "container">
+        <h2>List of entries</h2>
+
+        <h1>Solids</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Reagent</th>
+                    <th>Formula</th>
+                    <th>Quantity (mg)</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entry in solids %}
+                <tr>
+                    <td>{{ entry.date }} </td>
+                    <td>{{ entry.reagent.name }} </td>
+                    <td>{{ entry.reagent.formula }} </td>
+                    <td>{{ entry.quantity }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        
+        <h1>Liquids</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Reagent</th>
+                    <th>Formula</th>
+                    <th>Quantity (ml) - corrected for concentration</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entry in liquids %}
+                <tr>
+                    <td>{{ entry.date }} </td>
+                    <td>{{ entry.reagent.name }} </td>
+                    <td>{{ entry.reagent.formula }} </td>
+                    <td>{{ entry.quantity }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

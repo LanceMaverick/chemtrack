@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="UTF-8">
+    <title>chemtrack</title>
+    {% load staticfiles %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" 
+        href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Orbitron|PT+Sans" rel="stylesheet", type= 'text/css'> 
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'reagents/style.css' %}"/>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    {{ form.media }}
+
+</head>
+
+
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="{% url 'index'  %}">chemtrack</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown"> add entry 
+            <span class="glyphicon glyphicon-pencil">
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="{% url 'add_solid' %}">solid</a></li>    
+                <li><a href="{% url 'add_liquid' %}">liquid</a></li>
+            </ul>
+        </li>
+        </span></a></li>
+      <li><a href="{% url 'add_reagent' %}"><span class="glyphicon glyphicon-plus"></span> add reagent</a></li>
+      <li><a href="{% url 'summary' %}"><span class="glyphicon glyphicon-list-alt"></span> summary</a></li>
+    </ul>
+  </div>
+</nav>
+{% block body %}
+{% endblock %}
+<body>
+</html>
+
+
