@@ -18,5 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^reagents', include('reagents.urls')),
+    #url(r'^reagents/', include('reagents.urls', namespace = 'reagents')),
+#    url(r'^reagents/', include('reagents.urls')),
+    url(r'^', include('reagents.urls')), #mapping root to app index for now
 ]
