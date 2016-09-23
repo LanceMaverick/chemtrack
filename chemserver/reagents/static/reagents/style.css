@@ -9,3 +9,20 @@ body{
 .navbar-brand{
     font-family: 'Orbitron', bold;
 }
+
+
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -155px;
+}
+.footer, .push {
+    height: 155px;
+}
