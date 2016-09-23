@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django.forms.extras.widgets import SelectDateWidget
 from django.contrib.admin import widgets
@@ -15,13 +16,16 @@ class AddNewReagent(forms.Form):
         CHOICES = [(r['cid'], str(r['name'])) for r in results]
         self.fields['choose'].widget = forms.RadioSelect()
         self.fields['choose'].choices = CHOICES
-
-    choose = forms.ChoiceField() 
+        
+        
 
 class AddReagentForm(ModelForm):
     class Meta:
         model = Reagent
         fields = ['name', 'formula']
+        
+#    choose = forms.ChoiceField() 
+
 
 #model form for adding use entry
 class SolidEntryForm(ModelForm):
@@ -29,7 +33,16 @@ class SolidEntryForm(ModelForm):
         model = SolidEntry
         fields = ['reagent', 'quantity']
 
+
 class LiquidEntryForm(ModelForm):
     class Meta:
         model = LiquidEntry
         fields = ['reagent', 'volume', 'concentration']
+
+
+class UserRegForm(ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password']
