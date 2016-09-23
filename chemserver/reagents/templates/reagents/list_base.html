@@ -1,0 +1,15 @@
+{% extends 'reagents/base.html' %}
+
+{% block body %}
+
+    <div class = "container" id="main_container">
+        <h1>Reagents</h1>
+            <ul>
+            {% for reagent in object_list %}
+                <li>{{ reagent.name }} - {{ reagent.formula }}</li>
+                {% empty %}
+                <li>No reagents in the database.</li>
+            {% endfor %}
+            </ul>
+        </div>
+{% endblock %}

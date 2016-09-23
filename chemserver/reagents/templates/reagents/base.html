@@ -6,8 +6,6 @@
     {% load staticfiles %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
     <link rel="stylesheet" 
         href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.css">
@@ -16,7 +14,12 @@
     
     <link rel="stylesheet" type="text/css" href="{% static 'reagents/style.css' %}"/>
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{% static 'reagents/js/main.js' %}"></script>
+    <script src="{% static 'reagents/js/main-ajax.js' %}"></script>
     {{ form.media }}
 
 </head>
@@ -26,26 +29,49 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-        <a class="navbar-brand" href="{% url 'index'  %}">chemtrack</a>
+        <a class="navbar-brand" href="{% url 'index'  %}">ChemTrack</a>
     </div>
     <ul class="nav navbar-nav">
+<!--    
       <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown"> add entry 
+            <a class="dropdown-toggle" data-toggle="dropdown"> Add entry 
             <span class="glyphicon glyphicon-pencil">
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="{% url 'add_solid' %}">solid</a></li>    
-                <li><a href="{% url 'add_liquid' %}">liquid</a></li>
+                <li><a href="add/solid">Solid</a></li>    
+                <li><a href="add/liquid">Liquid</a></li>
             </ul>
         </li>
         </span></a></li>
-      <li><a href="{% url 'add_reagent' %}"><span class="glyphicon glyphicon-plus"></span> add reagent</a></li>
-      <li><a href="{% url 'summary' %}"><span class="glyphicon glyphicon-list-alt"></span> summary</a></li>
+-->
+<li><a href="{% url 'add_reagent' %}"><span class="glyphicon glyphicon-plus"></span> Add New Reagent</a></li></span></a></li>
+
+      <li><a href="{% url 'add_solid' %}"><span class="glyphicon glyphicon-pencil"></span> Record Solid</a></li></span></a></li>
+
+      <li><a href="{% url 'add_liquid' %}"><span class="glyphicon glyphicon-pencil"></span> Record Liquid</a></li></span></a></li>
+
+      <li><a href="{% url 'summary_solid' %}"><span class="glyphicon glyphicon-list-alt"></span> Solids Usage Summary</a></li></span></a></li>
+
+      <li><a href="{% url 'summary_liquid' %}"><span class="glyphicon glyphicon-list-alt"></span> Liquids Usage Summary</a></li></span></a></li>
+
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="#"><span class="glyphicon glyphicon-user"></span> View Profile</a>
+        </li>
+        <li>
+            <a href="#"><span class="glyphicon glyphicon-off"></span> Logout</a>
+        </li>
     </ul>
   </div>
 </nav>
 {% block body %}
 {% endblock %}
+<div class="push"></div>
+</div>
+<div class="footer">
+    <p>Created by Peter Griffith. Available under MIT license <a href= "https://github.com/LanceMaverick/chemtrack">here</a></p>
+  </div>
 <body>
 </html>
 

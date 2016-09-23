@@ -34,26 +34,5 @@
             </tbody>
         </table>
         
-        <h1>Liquids</h1>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Reagent</th>
-                    <th>Formula</th>
-                    <th>Quantity (ml) - corrected for concentration</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for entry in object_list %}
-                <tr>
-                    <td>{{ entry.date }} </td>
-                    <td>{{ entry.reagent.name }} </td>
-                    <td>{{ entry.reagent.formula }} </td>
-                    <td>{{ entry.quantity }} </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
     </div>
 {% endblock %}
