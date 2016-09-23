@@ -7,11 +7,12 @@ class Reagent(models.Model):
     name = models.CharField(max_length = 100)
     formula = models.CharField(max_length=50)
     
+    class Meta:
+        verbose_name_plural = 'substances and reagents'
+    
     def __str__(self):
         return '{} | {}'.format(self.name, self.formula)
     
-    class Meta:
-        verbose_name_plural = 'substances and reagents'
 
 
 #liquid and solid reagents are kept in seperate models
@@ -42,7 +43,7 @@ class SolidEntry(models.Model):
     quantity = models.FloatField(verbose_name =  'amount used in (mg)', null=True) # in mg
 
     def __str__(self):
-        return '{} | {} ml'.format(self.reagent.formula, self.quantity)
+        return '{} | {} mg'.format(self.reagent.formula, self.quantity)
 
     class Meta:
         verbose_name = 'solid'
